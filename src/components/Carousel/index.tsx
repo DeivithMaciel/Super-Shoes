@@ -17,7 +17,7 @@ const Carousel: React.FC = () => {
   const carousel = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
-    fetch('http://localhost:3000/static/shoes.json')
+    fetch('/static/shoes.json')
       .then((res) => res.json())
       .then(setData)
   }, [])
