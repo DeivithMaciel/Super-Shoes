@@ -10,7 +10,7 @@ function App() {
       <GlobalStyle />
       <div className="container">
         <div>
-          <img src={logo} alt="Super Shoes logo" />
+          <img src={logo} alt="Super Shoes" />
         </div>
         <Carousel />
       </div>
