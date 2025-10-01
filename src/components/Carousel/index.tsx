@@ -1,10 +1,12 @@
 import { useEffect, useState, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 
 import rightIcon from '../../Assets/images/216151_right_chevron_icon.png'
 
 import * as S from './styles'
+import { add, open } from '../../Redux/reducers/cart'
 
-type ItemShoe = {
+export type ItemShoe = {
   id: number
   name: string
   price: number | null
@@ -12,7 +14,7 @@ type ItemShoe = {
   image: string
 }
 
-const Carousel: React.FC = () => {
+const Carousel = () => {
   const [data, setData] = useState<ItemShoe[]>([])
   const carousel = useRef<HTMLUListElement>(null)
 
@@ -21,6 +23,12 @@ const Carousel: React.FC = () => {
       .then((res) => res.json())
       .then(setData)
   }, [])
+
+  const dispatch = useDispatch()
+  const addToCart = (shoe: ItemShoe) => {
+    dispatch(add(shoe))
+    dispatch(open())
+  }
 
   const handleLeftClick = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -55,7 +63,12 @@ const Carousel: React.FC = () => {
             <S.Info>
               <span className="name">{name}</span>
               <span className="oldPrice">{formatPrice(oldPrice)}</span>
-              <span className="price">{formatPrice(price)}</span>
+              <span
+                onClick={() => addToCart({ id, image, name, oldPrice, price })}
+                className="price"
+              >
+                {formatPrice(price)}
+              </span>
             </S.Info>
           </S.Item>
         ))}
