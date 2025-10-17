@@ -7,7 +7,7 @@ type CartSlice = {
 }
 
 const initialState: CartSlice = {
-  items: [],
+  items: [] as ItemShoe[],
   isOpen: false
 }
 
@@ -16,16 +16,24 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<ItemShoe>) => {
-      state.items.find((item) => item.id === action.payload.id)
+      const alreadySelected = state.items.find(
+        (item) => item.id === action.payload.id
+      )
+
+      if (!alreadySelected) {
+        state.items.push(action.payload)
+      } else {
+        alert('Tênis já adicionado')
+      }
     },
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)
     },
     open: (state) => {
-      state.isOpen === true
+      state.isOpen = true
     },
     close: (state) => {
-      state.isOpen === false
+      state.isOpen = false
     }
   }
 })

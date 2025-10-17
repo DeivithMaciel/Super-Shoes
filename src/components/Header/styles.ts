@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
+import { colors } from '../../globalStyle'
+
 export const Header = styled.div`
-  background-color: #eee;
+  background-color: ${colors.white};
   padding: 8px 40px;
   display: flex;
   justify-content: space-between;
@@ -18,7 +20,7 @@ export const Logo = styled.h1`
 export const Cart = styled.div`
   display: flex;
   align-items: center;
-  color: #ff7e3b;
+  color: ${colors.orange};
 
   img {
     height: 64px;
@@ -35,8 +37,12 @@ export const LinkItem = styled.li`
   padding: 8px;
   cursor: pointer;
 
+  &:hover {
+    background-color: ${colors.blue};
+  }
+
   a {
-    color: #ff7e3b;
+    color: ${colors.orange};
     text-decoration: none;
   }
 `

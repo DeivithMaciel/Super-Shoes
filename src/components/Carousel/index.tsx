@@ -4,14 +4,21 @@ import { useDispatch } from 'react-redux'
 import rightIcon from '../../Assets/images/216151_right_chevron_icon.png'
 
 import * as S from './styles'
-import { add, open } from '../../Redux/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
 
 export type ItemShoe = {
   id: number
   name: string
-  price: number | null
+  price: number
   oldPrice: number | null
   image: string
+}
+
+export const formatPrice = (price: number | null): string => {
+  if (price === null || isNaN(price)) {
+    return ''
+  }
+  return `R$ ${price.toFixed(2).replace('.', ',')}`
 }
 
 const Carousel = () => {
@@ -25,6 +32,7 @@ const Carousel = () => {
   }, [])
 
   const dispatch = useDispatch()
+
   const addToCart = (shoe: ItemShoe) => {
     dispatch(add(shoe))
     dispatch(open())
@@ -42,13 +50,6 @@ const Carousel = () => {
     if (carousel.current) {
       carousel.current.scrollLeft += carousel.current.offsetWidth
     }
-  }
-
-  const formatPrice = (price: number | null): string => {
-    if (price === null || isNaN(price)) {
-      return 'R$ 0,00'
-    }
-    return `R$ ${price.toFixed(2).replace('.', ',')}`
   }
 
   if (!data || !data.length) return null

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { colors } from '../../globalStyle'
+
 export const Carousel = styled.ul`
   display: flex;
   overflow-x: auto;
@@ -11,7 +13,7 @@ export const Carousel = styled.ul`
 `
 
 export const Item = styled.li`
-  background-color: #eee;
+  background-color: ${colors.white};
   margin: 10px;
   padding: 10px;
   width: 280px;
@@ -48,14 +50,14 @@ export const Info = styled.div`
     font-size: 1.2rem;
     font-weight: bold;
     margin: 4px 0;
-    color: #00a8fb;
+    color: ${colors.blue};
   }
 
   .oldPrice {
     font-size: 0.8rem;
     text-decoration: line-through;
     flex-grow: 1;
-    color: #e81a5d;
+    color: ${colors.pink};
     margin-bottom: auto;
   }
 
@@ -63,7 +65,12 @@ export const Info = styled.div`
     margin-top: auto;
     font-size: 1.2rem;
     font-weight: bold;
-    background-color: #ff7e3b;
+    background-color: ${colors.orange};
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${colors.lightOrange};
+    }
   }
 `
 export const Buttons = styled.div`

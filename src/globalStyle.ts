@@ -12,16 +12,21 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   width: 100%;
-  min-height: 100vh;
   background-color: #e1e1e1;
   color: #1e1e1e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
+  }
 
 .container {
-    max-width: 75vw;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 128px;
 }
 `
+
+export const colors = {
+  orange: '#ff7e3b',
+  lightOrange: '#ffbe76',
+  white: '#eee',
+  pink: '#e81a5d',
+  blue: '#00a8fb'
+}

@@ -5,7 +5,7 @@ import Header from './components/Header'
 import Carousel from './components/Carousel'
 import Aside from './components/Aside'
 
-import { store } from './Redux/store'
+import { store } from './store'
 
 function App() {
   return (
