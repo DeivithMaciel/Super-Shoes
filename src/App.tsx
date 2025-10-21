@@ -1,21 +1,20 @@
-import { GlobalStyle } from './globalStyle'
 import { Provider } from 'react-redux'
-
-import Header from './components/Header'
-import Carousel from './components/Carousel'
-import Aside from './components/Aside'
+import { BrowserRouter } from 'react-router-dom'
 
 import { store } from './store'
+import Aside from './components/Aside'
+
+import { GlobalStyle } from './globalStyle'
+import Rotas from './pages/routes'
 
 function App() {
   return (
     <Provider store={store}>
-      <GlobalStyle />
-      <Aside />
-      <div className="container">
-        <Header />
-        <Carousel />
-      </div>
+      <BrowserRouter>
+        <GlobalStyle />
+        <Aside />
+        <Rotas />
+      </BrowserRouter>
     </Provider>
   )
 }

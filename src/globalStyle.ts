@@ -1,5 +1,15 @@
 import { createGlobalStyle } from 'styled-components'
 
+export const colors = {
+  orange: '#ff7e3b',
+  lightOrange: '#ffbe76',
+  white: '#eee',
+  pink: '#e81a5d',
+  blue: '#00a8fb',
+  gray: '#e1e1e1',
+  black: '#1e1e1e'
+}
+
 export const GlobalStyle = createGlobalStyle`
 
   *{
@@ -12,8 +22,8 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   width: 100%;
-  background-color: #e1e1e1;
-  color: #1e1e1e;
+  background-color: ${colors.gray};
+  color: ${colors.black};
   }
 
 .container {
@@ -22,11 +32,3 @@ body {
   padding: 24px 128px;
 }
 `
-
-export const colors = {
-  orange: '#ff7e3b',
-  lightOrange: '#ffbe76',
-  white: '#eee',
-  pink: '#e81a5d',
-  blue: '#00a8fb'
-}

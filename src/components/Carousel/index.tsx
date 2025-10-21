@@ -14,6 +14,10 @@ export type ItemShoe = {
   image: string
 }
 
+type CarouselProps = {
+  brand: string
+}
+
 export const formatPrice = (price: number | null): string => {
   if (price === null || isNaN(price)) {
     return ''
@@ -21,15 +25,20 @@ export const formatPrice = (price: number | null): string => {
   return `R$ ${price.toFixed(2).replace('.', ',')}`
 }
 
-const Carousel = () => {
+const Carousel = ({ brand }: CarouselProps) => {
   const [data, setData] = useState<ItemShoe[]>([])
   const carousel = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
     fetch('/static/shoes.json')
       .then((res) => res.json())
-      .then(setData)
-  }, [])
+      .then((data) => {
+        const filterBrand = data.filter((item: ItemShoe) =>
+          item.name.toLowerCase().includes(brand.toLowerCase())
+        )
+        setData(filterBrand)
+      })
+  }, [brand])
 
   const dispatch = useDispatch()
 
