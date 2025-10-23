@@ -1,14 +1,14 @@
 import BrandList from '../../components/BrandList'
-import Carousel from '../../components/Carousel'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import HeroCarousel from '../../components/HeroCarousel'
 
 const Home = () => {
   return (
     <>
       <div className="container">
         <Header />
-        <Carousel brand="nike" />
+        <HeroCarousel />
         <BrandList />
       </div>
       <Footer />

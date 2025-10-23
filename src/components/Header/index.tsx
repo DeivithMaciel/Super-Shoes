@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { HashLink } from 'react-router-hash-link'
 
 import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/cart'
@@ -23,25 +24,39 @@ const Header = () => {
       </S.Logo>
       <S.LinkList>
         <S.LinkItem>
-          <a href="#">Nike</a>
+          <HashLink smooth to="#nike">
+            Nike
+          </HashLink>
         </S.LinkItem>
         <S.LinkItem>
-          <a href="#">Asics</a>
+          <HashLink smooth to="#asics">
+            Asics
+          </HashLink>
         </S.LinkItem>
         <S.LinkItem>
-          <a href="#">Oakley</a>
+          <HashLink smooth to="#oakley">
+            Oakley
+          </HashLink>
         </S.LinkItem>
         <S.LinkItem>
-          <a href="#">Adidas</a>
+          <HashLink smooth to="#adidas">
+            Adidas
+          </HashLink>
         </S.LinkItem>
         <S.LinkItem>
-          <a href="#">Pulma</a>
+          <HashLink smooth to="#puma">
+            Puma
+          </HashLink>
         </S.LinkItem>
         <S.LinkItem>
-          <a href="#">Mizuno</a>
+          <HashLink smooth to="#mizuno">
+            Mizuno
+          </HashLink>
         </S.LinkItem>
         <S.LinkItem>
-          <a href="#">Fila</a>
+          <HashLink smooth to="#fila">
+            Fila
+          </HashLink>
         </S.LinkItem>
       </S.LinkList>
       <S.Cart>

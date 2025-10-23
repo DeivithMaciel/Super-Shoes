@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { colors } from '../../globalStyle'
 
 export const BrandList = styled.div`
+  background-color: ${colors.white};
+
   h2 {
     text-align: center;
     font-weight: bold;
@@ -23,7 +25,7 @@ export const BrandList = styled.div`
 
 export const BrandItem = styled.li`
   display: flex;
-  background-color: ${colors.white};
+  background-color: ${colors.gray};
   border-radius: 16px;
   padding: 16px;
   width: 720px;
@@ -54,6 +56,7 @@ export const BrandInfos = styled.div`
   p {
     font-size: 18px;
     line-height: 24px;
+    padding: 8px;
   }
 
   button {

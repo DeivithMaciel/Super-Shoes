@@ -13,7 +13,7 @@ const BrandList = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.9 }}
         >
-          <S.BrandItem>
+          <S.BrandItem id="nike">
             <img
               src="https://www.nike.com.br/images/meta/open-graph-main-image.jpg"
               alt="Nike"
@@ -35,7 +35,7 @@ const BrandList = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.9 }}
         >
-          <S.BrandItem>
+          <S.BrandItem id="asics">
             <S.BrandInfos>
               <h3>Asics</h3>
               <p>
@@ -57,7 +57,7 @@ const BrandList = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.9 }}
         >
-          <S.BrandItem>
+          <S.BrandItem id="oakley">
             <img
               className="oakley"
               src="https://i.pinimg.com/1200x/8f/d3/18/8fd318b31a8278d309a212411c5605ee.jpg"
@@ -80,7 +80,7 @@ const BrandList = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.9 }}
         >
-          <S.BrandItem>
+          <S.BrandItem id="adidas">
             <S.BrandInfos>
               <h3>Adidas</h3>
               <p>
@@ -102,7 +102,7 @@ const BrandList = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.9 }}
         >
-          <S.BrandItem>
+          <S.BrandItem id="puma">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGHl68Qqh_YpAEQdvFf3DcSDDY89TBvBiKYQ&s"
               alt="Puma"
@@ -124,7 +124,7 @@ const BrandList = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.9 }}
         >
-          <S.BrandItem>
+          <S.BrandItem id="mizuno">
             <S.BrandInfos>
               <h3>Mizuno</h3>
               <p>
@@ -146,7 +146,7 @@ const BrandList = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.9 }}
         >
-          <S.BrandItem>
+          <S.BrandItem id="fila">
             <img
               src="https://i.pinimg.com/564x/d5/1e/56/d51e5665d3d528a98b3a513b77d793f0.jpg"
               alt="Fila"
