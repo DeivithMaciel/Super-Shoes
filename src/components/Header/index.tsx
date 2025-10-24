@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { HashLink } from 'react-router-hash-link'
+import { Link } from 'react-router-dom'
 
 import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/cart'
@@ -20,43 +20,31 @@ const Header = () => {
   return (
     <S.Header>
       <S.Logo>
-        <img src={logo} alt="SUPER SHOES" />
+        <Link to="/">
+          <img src={logo} alt="SUPER SHOES" />
+        </Link>
       </S.Logo>
       <S.LinkList>
         <S.LinkItem>
-          <HashLink smooth to="#nike">
-            Nike
-          </HashLink>
+          <Link to="/shoes/nike">Nike</Link>
         </S.LinkItem>
         <S.LinkItem>
-          <HashLink smooth to="#asics">
-            Asics
-          </HashLink>
+          <Link to="/shoes/asics">Asics</Link>
         </S.LinkItem>
         <S.LinkItem>
-          <HashLink smooth to="#oakley">
-            Oakley
-          </HashLink>
+          <Link to="/shoes/oakley">Oakley</Link>
         </S.LinkItem>
         <S.LinkItem>
-          <HashLink smooth to="#adidas">
-            Adidas
-          </HashLink>
+          <Link to="/shoes/adidas">Adidas</Link>
         </S.LinkItem>
         <S.LinkItem>
-          <HashLink smooth to="#puma">
-            Puma
-          </HashLink>
+          <Link to="/shoes/puma">Puma</Link>
         </S.LinkItem>
         <S.LinkItem>
-          <HashLink smooth to="#mizuno">
-            Mizuno
-          </HashLink>
+          <Link to="/shoes/mizuno">Mizuno</Link>
         </S.LinkItem>
         <S.LinkItem>
-          <HashLink smooth to="#fila">
-            Fila
-          </HashLink>
+          <Link to="/shoes/fila">Fila</Link>
         </S.LinkItem>
       </S.LinkList>
       <S.Cart>

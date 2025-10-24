@@ -36,6 +36,7 @@ export const LinkList = styled.ul`
 export const LinkItem = styled.li`
   padding: 8px;
   cursor: pointer;
+  font-size: 24px;
 
   &:hover {
     background-color: ${colors.blue};

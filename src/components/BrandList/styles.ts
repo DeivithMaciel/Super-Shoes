@@ -33,7 +33,8 @@ export const BrandItem = styled.li`
 
   img {
     height: 240px;
-    width: 240px;
+    max-width: 240px;
+    width: 100%;
     padding: 8px;
   }
 
