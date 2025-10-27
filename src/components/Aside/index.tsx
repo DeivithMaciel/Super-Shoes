@@ -4,6 +4,7 @@ import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
 import * as S from './styles'
 import { formatPrice } from '../Carousel'
+import { Link } from 'react-router-dom'
 
 const Aside = () => {
   const dispatch = useDispatch()
@@ -15,13 +16,6 @@ const Aside = () => {
   const removeItem = (id: number) => {
     dispatch(remove(id))
   }
-
-  // const formatPrice = (price = 0) => {
-  //   return new Intl.NumberFormat('pr-BR', {
-  //     style: 'currency',
-  //     currency: 'BRL'
-  //   })
-  // }
 
   const totalPrice = () => {
     return items.reduce((acumulador, valorAtual) => {
@@ -55,7 +49,9 @@ const Aside = () => {
               <h4>Valor total:</h4>
               <span>{formatPrice(totalPrice())}</span>
             </S.totalToPay>
-            <S.PayButton>Pagamento</S.PayButton>
+            <Link to={'/checkout'}>
+              <S.PayButton onClick={closeCart}>Pagamento</S.PayButton>
+            </Link>
           </>
         ) : (
           <S.noItems>Nenhum item adicionado ao carrinho</S.noItems>

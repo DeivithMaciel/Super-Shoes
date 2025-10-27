@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { colors } from '../../globalStyle'
 
 export const BrandList = styled.div`
@@ -60,18 +61,23 @@ export const BrandInfos = styled.div`
     padding: 8px;
   }
 
-  button {
-    margin: auto 32px 16px;
-    padding: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    background-color: ${colors.orange};
-    border: 1px solid ${colors.white};
-    border-radius: 8px;
-    cursor: pointer;
+  a {
+    margin-top: auto;
+    margin-bottom: 16px;
 
-    &:hover {
-      background-color: ${colors.lightOrange};
+    button {
+      width: 100%;
+      padding: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      background-color: ${colors.orange};
+      border: 1px solid ${colors.white};
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${colors.lightOrange};
+      }
     }
   }
 `

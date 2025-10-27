@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion'
-import * as S from './styles'
-import { Brand, Brands as mockBrands } from '../../data/brands'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import { Brand, Brands as mockBrands } from '../../data/brands'
+
+import * as S from './styles'
 
 const BrandList = () => {
   const [brands, setBrands] = useState<Brand[]>([])
@@ -36,7 +39,9 @@ const BrandList = () => {
                 <S.BrandInfos>
                   <h3>{brand.name}</h3>
                   <p>{brand.description}</p>
-                  <button>Lista de tênis</button>
+                  <Link to={`/shoes/${brand.id}`}>
+                    <button>Lista de tênis</button>
+                  </Link>
                 </S.BrandInfos>
               </S.BrandItem>
             </motion.li>

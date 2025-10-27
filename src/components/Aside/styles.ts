@@ -83,6 +83,7 @@ export const PayButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   margin: 0 8px;
+  width: 95%;
 
   &:hover {
     background-color: ${colors.lightOrange};
