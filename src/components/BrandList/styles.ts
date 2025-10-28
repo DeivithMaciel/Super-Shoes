@@ -24,7 +24,7 @@ export const BrandList = styled.div`
   }
 `
 
-export const BrandItem = styled.li`
+export const BrandItem = styled.div`
   display: flex;
   background-color: ${colors.gray};
   border-radius: 16px;

@@ -123,6 +123,20 @@ export const PaymentPay = styled.div`
   p {
     padding: 16px;
   }
+
+  button {
+    background-colors: ${colors.white};
+    color: ${colors.orange};
+    border: 1px solid ${colors.white};
+    border-radius: 8px;
+    margin: 8px auto;
+    padding: 8px 36px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${colors.gray};
+    }
+  }
 `
 
 export const FakeQRCode = styled.h3`
@@ -139,9 +153,74 @@ export const FakeQRCode = styled.h3`
 
 export const Form = styled.form`
   display: flex;
+  flex-direction: column;
   height: 100%;
 `
 
-export const Row = styled.div``
+export const Row = styled.div`
+  display: flex;
+`
 
-export const InputGroup = styled.div``
+export const InputGroup = styled.div`
+  padding: 8px;
+  justify-content: space-between;
+
+  label {
+    margin-right: 1vw;
+  }
+`
+
+export const Modal = styled.div`
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &.visible {
+    display: flex;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .container {
+    background-color: ${colors.blue};
+    max-width: 1024px;
+  }
+`
+
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  border-radius: 8px;
+
+  p {
+    padding: 16px;
+  }
+
+  button {
+    backgroind-color: ${colors.white};
+    color: ${colors.blue};
+    border-radius: 8px;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${colors.gray};
+    }
+  }
+`

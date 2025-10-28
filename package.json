@@ -69,6 +69,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "json-server": "^1.0.0-beta.3",
     "prettier": "3.6.2",
+    "react-imask": "^7.6.1",
     "react-router-dom": "^7.9.4",
     "react-router-hash-link": "^2.4.3",
     "redux-logger": "^3.0.6"
