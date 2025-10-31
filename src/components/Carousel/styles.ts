@@ -12,6 +12,11 @@ export const Carousel = styled.ul`
   }
 `
 
+export const Grid = styled.div`
+  display: flex;
+  padding-bottom: 48px;
+`
+
 export const Item = styled.li`
   background-color: ${colors.white};
   margin: 10px;

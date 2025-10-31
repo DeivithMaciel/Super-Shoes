@@ -64,33 +64,63 @@ const Carousel = ({ brand }: CarouselProps) => {
   if (!data || !data.length) return null
   return (
     <>
-      <S.Carousel ref={carousel}>
-        {data.map(({ id, image, name, oldPrice, price }) => (
-          <S.Item key={id}>
-            <S.Image>
-              <img src={image} alt={name} />
-            </S.Image>
-            <S.Info>
-              <span className="name">{name}</span>
-              <span className="oldPrice">{formatPrice(oldPrice)}</span>
-              <span
-                onClick={() => addToCart({ id, image, name, oldPrice, price })}
-                className="price"
-              >
-                {formatPrice(price)}
-              </span>
-            </S.Info>
-          </S.Item>
-        ))}
-      </S.Carousel>
-      <S.Buttons>
-        <button onClick={handleLeftClick} className="left">
-          <img src={rightIcon} alt="Scroll left" />
-        </button>
-        <button onClick={handleRightClick}>
-          <img src={rightIcon} alt="Scroll right" />
-        </button>
-      </S.Buttons>
+      {data.length < 6 ? (
+        <>
+          <S.Grid>
+            {data.map(({ id, image, name, oldPrice, price }) => (
+              <S.Item key={id}>
+                <S.Image>
+                  <img src={image} alt={name} />
+                </S.Image>
+                <S.Info>
+                  <span className="name">{name}</span>
+                  <span className="oldPrice">{formatPrice(oldPrice)}</span>
+                  <span
+                    onClick={() =>
+                      addToCart({ id, image, name, oldPrice, price })
+                    }
+                    className="price"
+                  >
+                    {formatPrice(price)}
+                  </span>
+                </S.Info>
+              </S.Item>
+            ))}
+          </S.Grid>
+        </>
+      ) : (
+        <>
+          <S.Carousel ref={carousel}>
+            {data.map(({ id, image, name, oldPrice, price }) => (
+              <S.Item key={id}>
+                <S.Image>
+                  <img src={image} alt={name} />
+                </S.Image>
+                <S.Info>
+                  <span className="name">{name}</span>
+                  <span className="oldPrice">{formatPrice(oldPrice)}</span>
+                  <span
+                    onClick={() =>
+                      addToCart({ id, image, name, oldPrice, price })
+                    }
+                    className="price"
+                  >
+                    {formatPrice(price)}
+                  </span>
+                </S.Info>
+              </S.Item>
+            ))}
+          </S.Carousel>
+          <S.Buttons>
+            <button onClick={handleLeftClick} className="left">
+              <img src={rightIcon} alt="Scroll left" />
+            </button>
+            <button onClick={handleRightClick}>
+              <img src={rightIcon} alt="Scroll right" />
+            </button>
+          </S.Buttons>
+        </>
+      )}
     </>
   )
 }

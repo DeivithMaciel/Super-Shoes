@@ -8,6 +8,7 @@ import logo from '../../Assets/images/super-shoes.png'
 import cartIcon from '../../Assets/images/CartIcon.png'
 
 import * as S from './styles'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -26,25 +27,60 @@ const Header = () => {
       </S.Logo>
       <S.LinkList>
         <S.LinkItem>
-          <Link to="/shoes/nike">Nike</Link>
+          <NavLink
+            to="/shoes/nike"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Nike
+          </NavLink>
         </S.LinkItem>
         <S.LinkItem>
-          <Link to="/shoes/asics">Asics</Link>
+          <NavLink
+            to="/shoes/asics"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Asics
+          </NavLink>
         </S.LinkItem>
         <S.LinkItem>
-          <Link to="/shoes/oakley">Oakley</Link>
+          <NavLink
+            to="/shoes/oakley"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Oakley
+          </NavLink>
         </S.LinkItem>
         <S.LinkItem>
-          <Link to="/shoes/adidas">Adidas</Link>
+          <NavLink
+            to="/shoes/adidas"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Adidas
+          </NavLink>
         </S.LinkItem>
         <S.LinkItem>
-          <Link to="/shoes/puma">Puma</Link>
+          <NavLink
+            to="/shoes/puma"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Puma
+          </NavLink>
         </S.LinkItem>
         <S.LinkItem>
-          <Link to="/shoes/mizuno">Mizuno</Link>
+          <NavLink
+            to="/shoes/mizuno"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Mizuno
+          </NavLink>
         </S.LinkItem>
         <S.LinkItem>
-          <Link to="/shoes/fila">Fila</Link>
+          <NavLink
+            to="/shoes/fila"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Fila
+          </NavLink>
         </S.LinkItem>
       </S.LinkList>
       <S.Cart>

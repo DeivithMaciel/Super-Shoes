@@ -39,12 +39,12 @@ const Checkout = () => {
     }
   }
 
-  const conclussion = () => {
-    window.location.reload
-  }
-
   const form = useFormik({
     initialValues: {
+      adress: '',
+      cep: '',
+      city: '',
+      state: '',
       cardOwner: '',
       email: '',
       cpf: '',
@@ -55,20 +55,16 @@ const Checkout = () => {
       cardCode: ''
     },
     validationSchema: Yup.object({
-      cardOwner: Yup.string()
-
-        .when((values, schema) =>
-          paymentMethod === 'creditCard'
-            ? schema.required('O campo é obrigatório')
-            : schema
-        ),
-      email: Yup.string()
-        .email('Digite um email válido')
-        .when((values, schema) =>
-          paymentMethod === 'creditCard'
-            ? schema.required('O campo é obrigatório')
-            : schema
-        ),
+      adress: Yup.string().required('O campo é obrigatório'),
+      cep: Yup.string().required('O campo é obrigatório'),
+      city: Yup.string().required('O campo é obrigatório'),
+      state: Yup.string().required('O campo é obrigatório'),
+      email: Yup.string().email().required('O campo é obrigatório'),
+      cardOwner: Yup.string().when((values, schema) =>
+        paymentMethod === 'creditCard'
+          ? schema.required('O campo é obrigatório')
+          : schema
+      ),
       cpf: Yup.string().when((values, schema) =>
         paymentMethod === 'creditCard'
           ? schema.required('O campo é obrigatório')
@@ -116,58 +112,159 @@ const Checkout = () => {
   return (
     <>
       <Header />
-      <S.PaymentPage>
-        <S.PaymentForm>
-          <h2>FORMA DE PAGAMENTO</h2>
-          <S.Infos>
-            <select name="payment" id="payment" onChange={paymentSelect}>
-              <option value="bankSlip">Boleto bancário</option>
-              <option value="pix">Pix</option>
-              <option value="creditCard">Cartão de crédito</option>
-            </select>
-            <button onClick={confirmContinue}>Continuar</button>
-          </S.Infos>
-        </S.PaymentForm>
-        <div>
-          <S.PaymentCart>
-            <h2>CARRINHO</h2>
-            <S.CartList>
-              {items.map((item) => (
-                <S.CartItem key={item.id}>
-                  <img src={item.image} alt={item.name} />
-                  <h4>{item.name}</h4>
-                  <h4>{formatPrice(item.price)}</h4>
-                </S.CartItem>
-              ))}
-            </S.CartList>
-            <h3>Valor total: {formatPrice(totalPrice())}</h3>
-          </S.PaymentCart>
-        </div>
-        {showPayment && (
-          <S.PaymentPay>
-            <h2>PAGAMENTO</h2>
-            {paymentMethod === 'pix' && (
-              <>
-                <p>
-                  Use o QR Code abaixo para pagar com pix (AMBIENTE DE TESTE)
-                </p>
-                <S.FakeQRCode>QR Code</S.FakeQRCode>
-              </>
-            )}
-            {paymentMethod === 'bankSlip' && (
-              <>
-                <p>Um boleto foi gerado. Pague até a data de vencimento</p>
-                <FakeBoleto />
-                <BarCode value="FAKEBOLETO1234567890" />
-              </>
-            )}
-            {paymentMethod === 'creditCard' && (
-              <>
-                <p>Digite os dados do seu cartão</p>
-                <S.Form onSubmit={form.handleSubmit}>
+      <S.Form onSubmit={form.handleSubmit}>
+        <S.PaymentPage>
+          <S.PaymentForm>
+            <h2>FORMA DE PAGAMENTO</h2>
+            <S.Infos>
+              <select name="payment" id="payment" onChange={paymentSelect}>
+                <option value="#">Selecione a forma de pagamento</option>
+                <option value="bankSlip">Boleto bancário</option>
+                <option value="pix">Pix</option>
+                <option value="creditCard">Cartão de crédito</option>
+              </select>
+              <button type="button" onClick={confirmContinue}>
+                Continuar
+              </button>
+            </S.Infos>
+          </S.PaymentForm>
+          <S.Adress>
+            <h2>ONDE ENTREGAMOS?</h2>
+            <div className="infos">
+              <S.Row>
+                <S.InputGroup>
+                  <label htmlFor="adress">Endereço</label>
+                  <input
+                    placeholder="Rua/Av: Nome da rua/Número/Bairro"
+                    type="text"
+                    id="adress"
+                    name="adress"
+                    value={form.values.adress}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                  />
+                </S.InputGroup>
+                <S.InputGroup>
+                  <label htmlFor="city">Cidade</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    value={form.values.city}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                  />
+                </S.InputGroup>
+              </S.Row>
+              <S.Row>
+                <S.InputGroup>
+                  <label htmlFor="cep">CEP</label>
+                  <IMaskInput
+                    mask={'00000-000'}
+                    placeholder="00000-000"
+                    type="text"
+                    id="cep"
+                    name="cep"
+                    value={form.values.cep}
+                    onAccept={(value) => form.setFieldValue('cep', value)}
+                    onBlur={form.handleBlur}
+                  />
+                </S.InputGroup>
+                <S.InputGroup>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    placeholder="usuario@gmail.com"
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={form.values.email}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                  />
+                </S.InputGroup>
+              </S.Row>
+              <S.Row>
+                <S.InputGroup>
+                  <label htmlFor="state">Estado</label>
+                  <select
+                    name="state"
+                    id="state"
+                    value={form.values.state}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                  >
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Destrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goias</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraiba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantis</option>
+                  </select>
+                </S.InputGroup>
+              </S.Row>
+            </div>
+          </S.Adress>
+          <div>
+            <S.PaymentCart>
+              <h2>CARRINHO</h2>
+              <S.CartList>
+                {items.map((item) => (
+                  <S.CartItem key={item.id}>
+                    <img src={item.image} alt={item.name} />
+                    <h4>{item.name}</h4>
+                    <h4>{formatPrice(item.price)}</h4>
+                  </S.CartItem>
+                ))}
+              </S.CartList>
+              <h3>Valor total: {formatPrice(totalPrice())}</h3>
+            </S.PaymentCart>
+          </div>
+          {showPayment && (
+            <S.PaymentPay>
+              <h2>PAGAMENTO</h2>
+              {paymentMethod === '#' && <p>Selecione a forma de pagamento</p>}
+              {paymentMethod === 'pix' && (
+                <>
+                  <p>
+                    Use o QR Code abaixo para pagar com pix (AMBIENTE DE TESTE)
+                  </p>
+                  <S.FakeQRCode>QR Code</S.FakeQRCode>
+                </>
+              )}
+              {paymentMethod === 'bankSlip' && (
+                <>
+                  <p>Um boleto foi gerado. Pague até a data de vencimento</p>
+                  <FakeBoleto />
+                  <BarCode value="FAKEBOLETO1234567890" />
+                </>
+              )}
+              {paymentMethod === 'creditCard' && (
+                <>
+                  <p>Digite os dados do seu cartão</p>
                   <S.Row>
                     <S.InputGroup>
-                      <label htmlFor="cardOwner">Nome do titular(cartão)</label>
+                      <label htmlFor="cardOwner">Nome do titular</label>
                       <input
                         id="cardOwner"
                         type="text"
@@ -178,14 +275,17 @@ const Checkout = () => {
                       />
                     </S.InputGroup>
                     <S.InputGroup>
-                      <label htmlFor="email">Email</label>
-                      <input
-                        placeholder="usuario@gmail.com"
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={form.values.email}
-                        onChange={form.handleChange}
+                      <label htmlFor="cardNumber">Número do cartão</label>
+                      <IMaskInput
+                        mask={'0000 0000 0000 0000'}
+                        placeholder="0000 0000 0000 0000"
+                        id="cardNumber"
+                        type="text"
+                        name="cardNumber"
+                        value={form.values.cardNumber}
+                        onAccept={(value) =>
+                          form.setFieldValue('cardNumber', value)
+                        }
                         onBlur={form.handleBlur}
                       />
                     </S.InputGroup>
@@ -212,23 +312,6 @@ const Checkout = () => {
                         name="cardDisplayName"
                         value={form.values.cardDisplayName}
                         onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                      />
-                    </S.InputGroup>
-                  </S.Row>
-                  <S.Row>
-                    <S.InputGroup>
-                      <label htmlFor="cardNumber">Número do cartão</label>
-                      <IMaskInput
-                        mask={'0000 0000 0000 0000'}
-                        placeholder="0000 0000 0000 0000"
-                        id="cardNumber"
-                        type="string"
-                        name="cardNumber"
-                        value={form.values.cardNumber}
-                        onAccept={(value) =>
-                          form.setFieldValue('cardNumber', value)
-                        }
                         onBlur={form.handleBlur}
                       />
                     </S.InputGroup>
@@ -286,24 +369,21 @@ const Checkout = () => {
                   >
                     Confirmar
                   </button>
-                </S.Form>
-              </>
-            )}
-          </S.PaymentPay>
-        )}
-      </S.PaymentPage>
+                </>
+              )}
+            </S.PaymentPay>
+          )}
+        </S.PaymentPage>
+      </S.Form>
       <S.Modal className={modalEstaAberta ? 'visible' : ''}>
         <S.ModalContent className="container">
           <h3>Compra efetuada order - #</h3>
           <p>Agradecemos a preferência de nossa loja tenha um ótimo dia</p>
-          <button type="button" onClick={() => setModalEstaAberta(false)}>
+          <button type="button" onClick={() => window.location.reload()}>
             Concluir
           </button>
         </S.ModalContent>
-        <div
-          className="overlay"
-          onClick={() => setModalEstaAberta(false)}
-        ></div>
+        <div className="overlay" onClick={() => window.location.reload()}></div>
       </S.Modal>
       <Footer />
     </>

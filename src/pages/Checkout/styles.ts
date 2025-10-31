@@ -224,3 +224,17 @@ export const ModalContent = styled.div`
     }
   }
 `
+
+export const Adress = styled.div`
+  background-color: ${colors.orange};
+  color: ${colors.white};
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .infos {
+    margin-bottom: auto;
+  }
+`

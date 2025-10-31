@@ -38,12 +38,18 @@ export const LinkItem = styled.li`
   cursor: pointer;
   font-size: 24px;
 
-  &:hover {
-    background-color: ${colors.blue};
-  }
-
   a {
     color: ${colors.orange};
     text-decoration: none;
+    padding: 8px;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: ${colors.gray};
+    }
+
+    &.isActive {
+      background-color: ${colors.blue};
+    }
   }
 `
