@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const Infos = styled.div`
   background-color: ${colors.white};
@@ -7,6 +7,10 @@ export const Infos = styled.div`
   border-radius: 8px;
   width: 360px;
   color: ${colors.black};
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 240px;
+  }
 `
 
 export const Line = styled.div`

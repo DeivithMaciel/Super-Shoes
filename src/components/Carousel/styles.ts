@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const Carousel = styled.ul`
   display: flex;
@@ -15,6 +15,16 @@ export const Carousel = styled.ul`
 export const Grid = styled.div`
   display: flex;
   padding-bottom: 48px;
+
+  // estranhamente não está funcionando
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const Item = styled.li`

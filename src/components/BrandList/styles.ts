@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const BrandList = styled.div`
   background-color: ${colors.white};
@@ -21,6 +21,17 @@ export const BrandList = styled.div`
 
   li.right {
     align-self: flex-end;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      align-self: none;
+    }
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    ul {
+      align-items: center;
+      text-align: center;
+    }
   }
 `
 
@@ -41,6 +52,20 @@ export const BrandItem = styled.div`
 
   .oakley {
     width: 420px;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 640px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 240px;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      height: 120px;
+    }
   }
 `
 

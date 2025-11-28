@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const Header = styled.div`
   background-color: ${colors.white};
@@ -8,12 +8,18 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  }
 `
 
 export const Logo = styled.h1`
   img {
     height: 120px;
     width: 240px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      height: 60px;
+      width: 120px;
+    }
   }
 `
 
@@ -26,12 +32,23 @@ export const Cart = styled.div`
     height: 64px;
     width: 64px;
     cursor: pointer;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      height: 40px;
+      width: 40px;
+    }
   }
 `
 
 export const LinkList = styled.ul`
-  list-style: none;
-  display: flex;
+  &.isNot-desktop {
+    list-style: none;
+    display: flex;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      display: none;
+    }
+  }
 `
 export const LinkItem = styled.li`
   padding: 8px;

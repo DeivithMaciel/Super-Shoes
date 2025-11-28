@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const Carousel = styled.div`
   height: 100vh;
@@ -41,4 +41,10 @@ export const Description = styled.p`
   margin-top: 360px;
   font-weight: bold;
   font-size: 36px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 24px;
+    margin-top: 320px;
+    text-align: center;
+  }
 `

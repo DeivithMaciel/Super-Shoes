@@ -25,7 +25,7 @@ const Header = () => {
           <img src={logo} alt="SUPER SHOES" />
         </Link>
       </S.Logo>
-      <S.LinkList>
+      <S.LinkList className="isNot-desktop">
         <S.LinkItem>
           <NavLink
             to="/shoes/nike"

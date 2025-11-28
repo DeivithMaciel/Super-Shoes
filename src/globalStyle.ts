@@ -10,6 +10,11 @@ export const colors = {
   black: '#1e1e1e'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '767px'
+}
+
 export const GlobalStyle = createGlobalStyle`
 
   *{
@@ -30,5 +35,9 @@ body {
   display: flex;
   flex-direction: column;
   padding: 24px 128px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    padding: 24px;
+  }
 }
 `

@@ -1,16 +1,31 @@
 import styled from 'styled-components'
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const PaymentPage = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 120px 120px;
-  gap: 40px;
+  margin: 8vh 8vw;
+  gap: 2.5vw;
 
   h2 {
-    padding-top: 24px;
+    padding-top: 1.5vh;
     margin-bottom: auto;
-    font-size: 48px;
+    font-size: 8vh;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    gap: 1vw;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
 `
 
@@ -20,12 +35,16 @@ export const PaymentForm = styled.div`
   justify-content: center;
   align-items: center;
   width: 35vw;
-  height: 350px;
+  height: 56vh;
 
   font-weight: bold;
   background-color: ${colors.orange};
   color: ${colors.white};
   border-radius: 8px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 export const Infos = styled.div`
@@ -35,7 +54,7 @@ export const Infos = styled.div`
   select {
     margin: 8px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     padding: 8px;
     color: ${colors.orange};
   }
@@ -46,12 +65,25 @@ export const Infos = styled.div`
     border: 1px solid ${colors.white};
     color: ${colors.orange};
     font-weight: bold;
-    font-size: 24px;
+    font-size: 4vh;
     border-radius: 8px;
     cursor: pointer;
 
     &:hover {
       background-color: ${colors.gray};
+    }
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    text-align: center;
+
+    select {
+      padding: 4px;
+      font-size: 14px;
+    }
+
+    button {
+      font-size: 3vh;
     }
   }
 `
@@ -80,8 +112,19 @@ export const PaymentCart = styled.div`
   h3 {
     display: flex;
     justify-content: center;
-    font-size: 32px;
+    font-size: 6vh;
     padding-bottom: 8px;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    h3 {
+      font-size: 4vh;
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    padding: 16px;
   }
 `
 
@@ -91,6 +134,10 @@ export const CartList = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
   padding: 16px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    display: none;
+  }
 `
 
 export const CartItem = styled.li`
@@ -137,6 +184,9 @@ export const PaymentPay = styled.div`
       background-color: ${colors.gray};
     }
   }
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 export const FakeQRCode = styled.h3`
@@ -167,6 +217,18 @@ export const InputGroup = styled.div`
 
   label {
     margin-right: 1vw;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    padding: 4px;
+
+    label {
+      font-size: 12px;
+    }
+
+    input {
+      font-size: 10px;
+    }
   }
 `
 
@@ -233,8 +295,12 @@ export const Adress = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
 
   .infos {
     margin-bottom: auto;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
   }
 `

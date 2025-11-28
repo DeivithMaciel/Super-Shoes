@@ -347,6 +347,8 @@ const Checkout = () => {
                         onBlur={form.handleBlur}
                       />
                     </S.InputGroup>
+                  </S.Row>
+                  <S.Row>
                     <S.InputGroup>
                       <label htmlFor="cardCode">CVV</label>
                       <IMaskInput

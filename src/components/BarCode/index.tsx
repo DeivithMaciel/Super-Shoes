@@ -7,16 +7,17 @@ type Props = {
 
 const BarCode = ({ value }: Props) => {
   const reference = useRef<SVGSVGElement | null>(null)
+  const notDesktop = window.innerWidth < 1024
 
   useEffect(() => {
     if (reference.current) {
       JsBarcode(reference.current, value, {
         format: 'CODE128',
-        width: 2,
+        width: notDesktop ? 1 : 2,
         height: 40
       })
     }
-  }, [value])
+  }, [notDesktop, value])
   return <svg ref={reference} />
 }
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const AsidePage = styled.div`
   display: none;
@@ -15,6 +15,10 @@ export const AsidePage = styled.div`
     display: flex;
     flex-direction: column;
     z-index: 3;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 160px;
+    }
   }
 `
 export const Overlay = styled.div`
@@ -24,6 +28,10 @@ export const Overlay = styled.div`
   background-color: #000;
   opacity: 0.8;
   z-index: 2;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 200vh;
+  }
 `
 
 export const ItemsList = styled.ul`
@@ -41,6 +49,12 @@ export const Item = styled.li`
   .product {
     height: 128px;
     width: 128px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    img {
+      display: none;
+    }
   }
 `
 
@@ -65,6 +79,10 @@ export const totalToPay = styled.div`
   justify-content: space-between;
   font-weight: bold;
   font-size: 24px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `
 
 export const noItems = styled.h3`

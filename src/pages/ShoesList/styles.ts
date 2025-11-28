@@ -1,16 +1,28 @@
 import styled from 'styled-components'
-import { colors } from '../../globalStyle'
+import { breakpoints, colors } from '../../globalStyle'
 
 export const Container = styled.div`
   display: flex;
   padding: 32px;
   text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const Logo = styled.img`
   height: 240px;
   max-width: 240px;
   width: 100%;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    height: 120px;
+    max-width: 140px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
 `
 
 export const Infos = styled.div`
@@ -30,5 +42,15 @@ export const Infos = styled.div`
     font-size: 36px;
     margin-top: auto;
     margin-bottom: 36px;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    h2 {
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 16px;
+    }
   }
 `
